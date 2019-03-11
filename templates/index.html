@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Collector App</title>
+    <link rel="stylesheet" href="../static/main.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Collection height</h1>
+        <h3>Please fill the form to get population statistics on height</h3>
+
+        <form class="" action="{{url_for("success")}}" method="POST">
+          <div class="form-group">
+            <label for="email1">Email address</label>
+            <input name="email_name" type="email" class="form-control" id="email1" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label for="number1">Height</label>
+            <input name="height_number" type="number" class="form-control" id="number1" min="50" max="300" step="0.1" placeholder="Enter height" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      <div class="jumbotron">
+        <h2>User Informations</h2>
+        <p> Unique ID: {{unique_ID}}</p>
+        <p> Mac Address: {{mac_ADDRESS}}</p>
+        <p> IP Address: {{ip_ADDRESS}}</p>
+        <p> Location: {{location_ADDRESS}}</p>
+      </div>
+    </div>
+  </body>
+</html>
