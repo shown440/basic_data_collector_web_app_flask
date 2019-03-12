@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,jsonify
 # from client_info import clientInfo
 import client_info
 #from flask_sqlalchemy import SQLAlchemy
@@ -22,7 +22,12 @@ app = Flask(__name__)
 #         super(Data, self).__init__()
 #         self.email_ = email_
 #         self.height_ = height_
+# from flask import request
+# from flask import jsonify
 
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return jsonify({'ip': request.remote_addr}), 200
 
 @app.route("/") # only "/"= Home page
 def index():
