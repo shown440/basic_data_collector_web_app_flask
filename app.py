@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request,jsonify
 # from client_info import clientInfo
 import client_info
+import json
+from urllib.request import urlopen
 #from flask_sqlalchemy import SQLAlchemy
 #from flask.ext.sqlalchemy import SQLAlchemy
 #from flask_sqlalchemy import SQLAlchemy
@@ -28,6 +30,29 @@ app = Flask(__name__)
 @app.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
     return jsonify({'ip': request.remote_addr}), 200
+
+@app.route('/user_ip2', methods=['GET'])
+def get_tasks2():
+    list_1=[]
+    url= 'http://ipinfo.io/json'
+    response = urlopen(url)
+    data = json.load(response)
+
+    # IP=data['ip']
+    # org=data['org']
+    # city = data['city']
+    # country=data['country']
+    # region=data['region']
+    #
+    # list_1.append(ip)
+    # list_1.append(org)
+    # list_1.append(city)
+    # list_1.append(country)
+    # list_1.append(region)
+    return str(data)
+    #print('IP : {4} \nRegion : {1} \nCountry : {2} \nCity : {3} \nOrg : {0}'.format(org,region,country,city,IP))
+    #returns actual IP-address from my internet connection
+    #return jsonify({'ip': request.environ['REMOTE_ADDR']}), 200
 
 @app.route('/user_ip', methods=['GET'])
 def get_tasks():
